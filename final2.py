@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# In[ ]:
 
 
 import pydeck as pdk
@@ -15,7 +15,7 @@ from dash.dependencies import Input, Output
 
 # Helper functions
 def generate_traces(year, color):
-    file_path = f"C:/Users/user/Desktop/서울특별시 구별 강수량_2018~2022(07~08)_성지영 (1)/서울특별시 구별 강수량_{year}(07~08).CSV"
+    file_path = f"C:/analysis/realfinal/data/서울특별시 구별 강수량_2018~2022(07~08)_성지영 (1)/서울특별시 구별 강수량_{year}(07~08).CSV"
     pcp = pd.read_csv(file_path)
     pcp['조사년월일'] = pcp['조사년월일'].apply(lambda x: pd.to_datetime(str(x), format='%Y-%m-%d'))
 
@@ -70,11 +70,11 @@ tot = gpd.read_file("C:/Users/user/Desktop/_census_data_2022_bnd_dong_bnd_dong_1
 tot.geometry = tot.geometry.set_crs("EPSG:5179")
 tot.geometry = tot.geometry.to_crs("EPSG:4326")
 
-file1 = pd.read_excel("c:/analysis/아파트_최종.xlsx")
-file2 = pd.read_excel("c:/analysis/연립다세대_최종.xlsx")
-file3 = pd.read_excel("c:/analysis/단독다가구_최종.xlsx")
+file1 = pd.read_excel("C:/analysis/realfinal/data/아파트_최종.xlsx")
+file2 = pd.read_excel("C:/analysis/realfinal/data/연립다세대_최종.xlsx")
+file3 = pd.read_excel("C:/analysis/realfinal/data/단독다가구_최종.xlsx")
 
-localpop = pd.read_excel("C:/Users/user/Desktop/평균생활인구수.xlsx")
+localpop = pd.read_excel("C:/analysis/realfinal/data/평균생활인구수.xlsx")
 
 merge_tot = pd.merge(tot, localpop, left_on='ADM_NM', right_on='행정동명', how='left')
 
